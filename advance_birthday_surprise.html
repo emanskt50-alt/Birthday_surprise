@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>A Little Early Surprise 🎀</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top,#3a234d,#120d1d 65%);color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:center;overflow-x:hidden}
+.app{width:min(430px,100%);min-height:100vh;padding:28px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.screen{width:100%;text-align:center;animation:fade .45s ease}
+.hidden{display:none}.small{opacity:.8;font-size:14px}.title{font-size:30px;line-height:1.15;margin:12px 0}.sub{color:#f4dff8;line-height:1.6}
+button{border:0;border-radius:999px;padding:13px 22px;font-size:16px;font-weight:700;color:#25112f;background:#ffd9ef;box-shadow:0 8px 24px #0005;margin:8px;cursor:pointer}
+.gift{font-size:95px;filter:drop-shadow(0 10px 18px #0008);cursor:pointer;animation:bob 1.7s infinite}.cake{font-size:100px;animation:pop .6s ease}
+.card{background:#ffffff12;border:1px solid #ffffff25;backdrop-filter:blur(10px);border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 12px 35px #0005}
+.envelope{font-size:90px;cursor:pointer;animation:bob 1.7s infinite}.message{text-align:left;line-height:1.75;color:#ffeef9}
+.progress{font-size:13px;color:#eacbe9;margin-bottom:14px}.next{margin-top:18px}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}.confetti span{position:absolute;top:-20px;font-size:18px;animation:fall 3s linear infinite}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-2deg)}}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div id="start" class="screen">
+    <div class="small">🎀 A tiny surprise, a little early...</div>
+    <div class="title">Someone has a surprise for you 👀💗</div>
+    <p class="sub">Your actual birthday is still waiting… but I couldn't wait this long. 🥹</p>
+    <button onclick="show('gift1')">Tap to Start ✨</button>
+  </div>
+
+  <div id="gift1" class="screen hidden">
+    <div class="progress">Gift 1 of 3 🎁</div>
+    <div class="title">Open your first gift</div>
+    <div class="gift" onclick="openGift1()">🎁</div>
+    <p class="small">Tap the gift</p>
+  </div>
+
+  <div id="cake" class="screen hidden">
+    <div class="cake">🎂</div>
+    <div class="title">Advance Happy Birthday! 💗</div>
+    <p class="sub">Bas thora sa early… because someone couldn't wait. 😂</p>
+    <button onclick="show('gift2')">Open Next Gift →</button>
+  </div>
+
+  <div id="gift2" class="screen hidden">
+    <div class="progress">Gift 2 of 3 🎁</div>
+    <div class="title">Little things for you 💌</div>
+    <div class="card">
+      <button onclick="show('memory')">💌 Our First Conversation</button>
+      <button onclick="show('like')">✨ One Thing I Like</button>
+      <button onclick="show('wish')">🤲🏻 My Wish For You</button>
+    </div>
+    <button onclick="show('gift3')">One Last Gift →</button>
+  </div>
+
+  <div id="memory" class="screen hidden">
+    <div class="title">💌 Our First Conversation</div>
+    <div class="card message">Jab hum mile the na, tab bilkul nahi pata tha ke aap itne khaas ban jaoge mere liye. 🥹❤️<br><br>I love you so, so muchh! 🫶🏻</div>
+    <button onclick="show('gift2')">← Back</button>
+  </div>
+
+  <div id="like" class="screen hidden">
+    <div class="title">✨ One Thing I Like About You</div>
+    <div class="card message">Bas itna samajh lo… aapki presence meri life ko thora aur special bana deti hai. 🤍</div>
+    <button onclick="show('gift2')">← Back</button>
+  </div>
+
+  <div id="wish" class="screen hidden">
+    <div class="title">🤲🏻 My Wish For You</div>
+    <div class="card message">Allah Pak aapko hamesha khush rakhe, har qadam par kamyabi de, aur aapki har achi dua qabool kare. Ameen. 🤲🏻❤️<br><br>Aur haan… mere ilawa har churail se mehfooz rakhe 😂😭<br>Mere ilawa koi aapki zindagi mein na aaye! 👀😂❤️</div>
+    <button onclick="show('gift2')">← Back</button>
+  </div>
+
+  <div id="gift3" class="screen hidden">
+    <div class="progress">Gift 3 of 3 🎁</div>
+    <div class="title">One last thing…</div>
+    <div class="envelope" onclick="show('letter')">💌</div>
+    <p class="small">Tap to open your letter</p>
+  </div>
+
+  <div id="letter" class="screen hidden">
+    <div class="title">For You 🤍</div>
+    <div class="card message">This is only a little advance surprise… 🎀<br><br>The real birthday surprise is still waiting for you.<br><br><b>28 November 2026 🎂✨</b><br><br>Until then, keep smiling. 🤍</div>
+    <button onclick="finish()">Finish ✨</button>
+  </div>
+
+  <div id="done" class="screen hidden">
+    <div class="title">🎉 Surprise complete!</div>
+    <div class="card"><p class="sub">Remember… this was only the little advance version. 👀🎀<br><br><b>See you on 28 November!</b> 🎂❤️</p></div>
+    <button onclick="show('start')">Replay 🔄</button>
+  </div>
+</div>
+<div id="confetti" class="confetti"></div>
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0)}
+function openGift1(){show('cake');burst()}
+function finish(){show('done');burst()}
+function burst(){const c=document.getElementById('confetti');c.innerHTML='';['🎀','💗','✨','🎉','💜','🌸'].forEach((e,i)=>{for(let j=0;j<5;j++){let s=document.createElement('span');s.textContent=e;s.style.left=Math.random()*100+'%';s.style.animationDelay=(Math.random()*1.5)+'s';c.appendChild(s)}});setTimeout(()=>c.innerHTML='',4000)}
+</script>
+</body>
+</html>
